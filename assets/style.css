@@ -70,6 +70,18 @@ textarea {
   transition: all 0.3s ease-in-out;
 }
 
-input {
+/* input {
   background-color: gray;
+} */
+
+.past-time {
+  background-color: gray;
+}
+
+.present-time {
+  background-color: lightgreen;
+}
+
+.future-time {
+  background-color: red;
 }

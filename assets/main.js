@@ -26,26 +26,27 @@ console.log(CurrentTime);
 console.log(moment().format("k"))
 
 function timeColor() {
-  for (var i = 0; i < 24; i++) {
-    // var inputText = "activity-" + i;
+    for (var i = 0; i < 24; i++) {
+      // var inputText = "activity-" + i;
+  
+      // used parseInt to turn all data-time strings to integers to be compared with current time
+  var timeData = parseInt(CurrentTime[i].getAttribute("data-time"))
+        console.log(timeData)      
 
-    // used parseInt to turn all data-time strings to integers to be compared with current time
-var timeData = parseInt(CurrentTime[i].getAttribute("data-time"))
-
-    if (moment().format("k") > timeData) {
-        console.log("past")
-      $("#actvity-" + i).css("background-color", "gray");
-    } 
-    else if (moment().format("k") < timeData) {
-        console.log("future")
-      $("#actvity-" + i ).css("background-color", "green");
-    } else {
-        console.log("present")
-      $("#actvity-" + i).css("background-color", "red");
+      if (moment().format("k") > timeData) {
+          console.log("past")
+        $("#activity-" + i).addClass("past-time");
+      } 
+      else if (moment().format("k") < timeData) {
+          console.log("future")
+        $("#activity-" + i ).addClass("present-time");
+      } else {
+          console.log("present")
+        $("#activity-" + i).addClass("future-time");
+      }
     }
   }
-}
-timeColor();
+  timeColor();
 
 
 // for loop to reduce html documentation?
