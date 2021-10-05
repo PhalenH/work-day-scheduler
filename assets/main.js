@@ -1,38 +1,51 @@
-console.log("Hello world")
+console.log("Hello world");
 var today = moment();
 
-$('#currentDay').text(today.format("dddd, MMM Do"));
+$("#currentDay").text(today.format("dddd, MMM Do"));
 
 // $('button').parent().on("click", function(event)
-$('button').on("click", function(event){
-    saveTask();
+$("button").on("click", function (event) {
+  saveTask();
 });
 
 function saveTask() {
-    localStorage.setItem("task", activity.value);
-  }
-  // save input in console log
-  // Should I save each one seperately or in an array
-  // if seperate, need ability to know which button was clicked, give parens element ID to match time
-  // if array could I assign each time with an index so will always match up
-
-
-
-
-var CurrentTime = $('h2').getAttribute("data-time")
-
-function timeColor(){
-    if (moment().format('h a') > CurrentTime) {
-        $('#actvity').css('background-color', 'gray');
-    }
-    else if (moment().format('h a') < CurrentTime) {
-        $('#actvity').css('background-color', 'green');
-    }
-    else {
-        $('#actvity').css('background-color', 'red');
-    }
+  localStorage.setItem("task", activity.value);
 }
-// if, else if, else statement to color input boxes based on if
-// time has passed (gray), in current time window(red), or future time (green)
+// save input in console log
+// Use an array
+// if array could I assign each time with an index so will always match up
+// need empty array for local storage to add input too
+var task = [] 
+ 
+
+
+
+
+var CurrentTime = document.getElementsByTagName("h2")
+console.log(CurrentTime);
+console.log(moment().format("k"))
+
+function timeColor() {
+  for (var i = 0; i < 24; i++) {
+    // var inputText = "activity-" + i;
+
+    // used parseInt to turn all data-time strings to integers to be compared with current time
+var timeData = parseInt(CurrentTime[i].getAttribute("data-time"))
+
+    if (moment().format("k") > timeData) {
+        console.log("past")
+      $("#actvity-" + i).css("background-color", "gray");
+    } 
+    else if (moment().format("k") < timeData) {
+        console.log("future")
+      $("#actvity-" + i ).css("background-color", "green");
+    } else {
+        console.log("present")
+      $("#actvity-" + i).css("background-color", "red");
+    }
+  }
+}
+timeColor();
+
 
 // for loop to reduce html documentation?
