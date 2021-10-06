@@ -11,22 +11,30 @@ $("#currentDay").text(today.format("dddd, MMM Do"));
 var task = [];
 if (localStorage.getItem("task") != null) {
   task = JSON.parse(localStorage.getItem("task"));
+  renderTask();
 }
 
 $("button").on("click", function (event) {
   for (var i = 0; i < 24; i++) {
-    var taskInput = "";
-    taskInput = $("#activity-" + i).value;
-    // taskInput = JSON.stringify($("#activity-" + i).value);
+    var taskInput = $("#activity-" + i).val();
+    // use val() not .value cause of jQuery
     console.log(taskInput);
-    task.push(taskInput);
+    // task.push(taskInput);
+    // push adds a value to the end of the array, task[i] will replace the value in the array at index i
+    task[i] = taskInput
     saveTask();
   }
 });
-// Possibly another for loop needed to keep value on page, like using: something.text($("#activity-" + i).value)?
 
 function saveTask() {
-  localStorage.setItem("task", JSON.stringify(task));
+    localStorage.setItem("task", JSON.stringify(task));
+  }
+
+// will need another for loop needed to keep value on page
+function renderTask(){
+    for (var i = 0; i < 24; i++) {
+        $("#activity-" + i).text(task[i])
+    } 
 }
 
 
@@ -34,8 +42,7 @@ function saveTask() {
 
 
 var CurrentTime = document.getElementsByTagName("h2");
-console.log(CurrentTime);
-console.log(moment().format("k"));
+// get array of all h2 elements
 
 function timeColor() {
   for (var i = 0; i < 24; i++) {
