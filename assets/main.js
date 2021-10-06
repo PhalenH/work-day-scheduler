@@ -49,10 +49,10 @@ function timeColor() {
       $("#activity-" + i).addClass("past-time");
     } else if (moment().format("k") < timeData) {
       console.log("future");
-      $("#activity-" + i).addClass("present-time");
+      $("#activity-" + i).addClass("future-time");
     } else {
       console.log("present");
-      $("#activity-" + i).addClass("future-time");
+      $("#activity-" + i).addClass("present-time");
     }
   }
 }
