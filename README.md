@@ -41,7 +41,7 @@ I adjust sizing, colors, borders, and presentation for content on the page, with
 
 ## Finished Product
 
-Here is a screenshot and link to the finished code quiz:
+Here is a screenshot and link to the finished work day scheduler:
 [Link to webpage](https://phalenh.github.io/work-day-scheduler/index.html)
 
 ![Code quiz page with 5 questions about JavaScript](./assets/work-day-scheduler.png)
